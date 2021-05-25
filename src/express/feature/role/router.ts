@@ -1,15 +1,11 @@
 import { Router } from 'express';
 import FeatureController from './controller';
-import entityRouter from './entity/router';
-import duRouter from './DU/router';
-import groupRouter from './group/router'
-import roleRouter from './role/router';
 import FeatureValidator from './validator';
 import { wrapController, wrapValidator } from '../../utils/express';
 import ValidateRequest from '../../utils/joi';
 import { getFoldersRequestSchema, createFolderRequestSchema } from './validator.schema';
 
-const featureRouter: Router = Router();
+const roleRouter: Router = Router();
 
 // getByRole (role_amanldentity or role_name)
 // getByDomainUser (name or uniqueld)
@@ -57,13 +53,6 @@ const featureRouter: Router = Router();
 // createHierarchy (hierarchy string)
 // renameGroup(group_id, newName)
 
-featureRouter.all('/entities', entityRouter);
-featureRouter.all('/domainUsers', duRouter);
-featureRouter.all('/groups', groupRouter);
-featureRouter.all('/roles', roleRouter);
+roleRouter.get('getByDomainUser', () => {});
 
-featureRouter.get('/folders', ValidateRequest(getFoldersRequestSchema), wrapController(FeatureController.getFolders));
-featureRouter.post('/folders', ValidateRequest(createFolderRequestSchema), wrapController(FeatureController.createFolder));
-featureRouter.get('/folders/hardToValidateWithSchema', wrapValidator(FeatureValidator.somethingThatIsImpossibleToValidateWithSchema));
-
-export default featureRouter;
+export default roleRouter;
