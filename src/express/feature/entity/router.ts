@@ -1,32 +1,26 @@
 import { Router } from 'express';
-import FeatureController from './controller';
-import FeatureValidator from './validator';
-import { wrapController, wrapValidator } from '../../utils/express';
-import ValidateRequest from '../../utils/joi';
-import { getFoldersRequestSchema, createFolderRequestSchema } from './validator.schema';
+// import FeatureController from './controller';
+// import FeatureValidator from './validator';
+// import { wrapController, wrapValidator } from '../../utils/express';
+// import ValidateRequest from '../../utils/joi';
+// import { getFoldersRequestSchema, createFolderRequestSchema } from './validator.schema';
 
 const entityRouter: Router = Router();
 
-// getByRole (role_amanldentity or role_name)
-// getByDomainUser (name or uniqueld)
-// getByld
-// getByldentifier (pn or id card)
-// getMany (id array)
-// search (name or pn or id_card)
-// getAll (filters)
-// getUpdatedFrom (from_date)
-// getUnderGroup  hierarchy
-// getDirectlyUnderGroup (group_id or hierarchy)
-// create (createDTO)
-// updateDetails (updateDTO)
-// discharge?  (person id)
-// connectDomainUser (person_id, du_name or du_uniqueld)
-// disconnectDomainUser (person_id, du_name or ser du_uniqueld)
-
-entityRouter.get('getByRole/:uniqueID', () => {});
-entityRouter.get('getByDomainUser/:uniqueID', () => {});
-entityRouter.get('getByld/:id', () => {});
-entityRouter.get('getByldentifier/:identifier', () => {});
-entityRouter.get('getMany/:identifier', () => {});
+entityRouter.get('/', () => {}); // query
+entityRouter.get('role/:uniqueID', () => {});
+entityRouter.get('digitalIdentity/:uniqueID', () => {});
+entityRouter.get('id/:id', () => {});
+entityRouter.get('identifier/:identifier', () => {});
+entityRouter.get(':identifier', () => {});
+entityRouter.get('search/:name', () => {});
+entityRouter.get('updatedFrom/:fromDate', () => {});
+entityRouter.get('underGroup/:hierarchy', () => {});
+entityRouter.get('directlyUnderGroup/:id', () => {}); // id or hierarchy
+entityRouter.post('create', () => {});
+entityRouter.put('updateDetails/:updateDTO', () => {});
+entityRouter.put('discharge/:id', () => {}); // ?
+entityRouter.put(':id/connectDomainUser/:domainUser', () => {});
+entityRouter.put(':id/disconnectDomainUser/:domainUser', () => {});
 
 export default entityRouter;

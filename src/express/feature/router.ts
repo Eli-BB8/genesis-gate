@@ -2,7 +2,7 @@ import { Router } from 'express';
 import FeatureController from './controller';
 import entityRouter from './entity/router';
 import duRouter from './DU/router';
-import groupRouter from './group/router'
+import groupRouter from './group/router';
 import roleRouter from './role/router';
 import FeatureValidator from './validator';
 import { wrapController, wrapValidator } from '../../utils/express';
