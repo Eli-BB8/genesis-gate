@@ -17,6 +17,9 @@ const config = {
             factor: env.get('RABBIT_RETRY_FACTOR').default(1.8).asFloatPositive(),
         },
     },
+    queryService: {
+        uri: env.get('QUERY_SERVICE').required().asUrlString(),
+    },
 };
 
 export default config;

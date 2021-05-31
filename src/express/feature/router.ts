@@ -8,6 +8,7 @@ import FeatureValidator from './validator';
 import { wrapController, wrapValidator } from '../../utils/express';
 import ValidateRequest from '../../utils/joi';
 import { getFoldersRequestSchema, createFolderRequestSchema } from './validator.schema';
+import ScopesHandler from './scopes';
 
 const featureRouter: Router = Router();
 
@@ -56,6 +57,8 @@ const featureRouter: Router = Router();
 // changeParent (group_id, parent_id)
 // createHierarchy (hierarchy string)
 // renameGroup(group_id, newName)
+
+featureRouter.use(wrapController(ScopesHandler.extractScopes));
 
 featureRouter.all('/entities', entityRouter);
 featureRouter.all('/domainUsers', duRouter);

@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import { wrapController } from '../../../utils/express';
+import ScopesHandler from '../scopes';
 // import FeatureController from './controller';
 // import FeatureValidator from './validator';
 // import { wrapController, wrapValidator } from '../../utils/express';
@@ -8,7 +10,7 @@ import { Router } from 'express';
 const entityRouter: Router = Router();
 
 entityRouter.get('/', () => {}); // query
-entityRouter.get('role/:uniqueID', () => {});
+entityRouter.get('role/:uniqueID', wrapController(ScopesHandler.extractScopes));
 entityRouter.get('digitalIdentity/:uniqueID', () => {});
 entityRouter.get('id/:id', () => {});
 entityRouter.get('identifier/:identifier', () => {});

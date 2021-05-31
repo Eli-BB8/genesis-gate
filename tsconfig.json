@@ -20,5 +20,6 @@
     "outDir": "./dist/",
     "lib": ["ES2020.Promise"]
   },
+  "files": ["custom.d.ts"],
   "include": ["src/**/*"]
 }
